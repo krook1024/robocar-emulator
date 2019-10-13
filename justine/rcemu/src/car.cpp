@@ -32,6 +32,7 @@
 #include <car.hpp>
 #include <traffic.hpp>
 #include <boost/iterator/iterator_concepts.hpp>
+#include <numeric>
 
 justine::robocar::Car::Car (
   justine::robocar::Traffic & traffic,

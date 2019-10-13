@@ -36,7 +36,7 @@ DX_PS_FEATURE(OFF)
 DX_INIT_DOXYGEN(justine, Doxyfile, doc)
 
 AC_LANG([C++])
-CXXFLAGS='-Wall -std=c++1y -O3'
+CXXFLAGS='-Wall -Wno-narrowing -std=c++1y -O3'
 LDFLAGS='-lboost_system -lpthread -lboost_date_time -lboost_filesystem -lboost_program_options'
 AX_CXX_COMPILE_STDCXX_11()
 AC_PROG_LIBTOOL
