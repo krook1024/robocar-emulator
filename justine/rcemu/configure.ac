@@ -37,21 +37,21 @@ DX_INIT_DOXYGEN(justine, Doxyfile, doc)
 
 AC_LANG([C++])
 CXXFLAGS='-Wall -std=c++1y -O3'
-LDFLAGS='-lboost_system -lpthread -lboost_date_time -lboost_filesystem'
+LDFLAGS='-lboost_system -lpthread -lboost_date_time -lboost_filesystem -lboost_program_options'
 AX_CXX_COMPILE_STDCXX_11()
 AC_PROG_LIBTOOL
-BOOST_REQUIRE([1.46.0])
-BOOST_GRAPH
-BOOST_SYSTEM
-BOOST_PROGRAM_OPTIONS
-BOOST_THREAD
-BOOST_ASIO
-BOOST_DATE_TIME
+#BOOST_REQUIRE([1.46.0])
+#BOOST_GRAPH
+#BOOST_SYSTEM
+#BOOST_PROGRAM_OPTIONS
+#BOOST_THREAD
+#BOOST_ASIO
+#BOOST_DATE_TIME
 #BOOST_LOG
 
 CXXFLAGS="$AM_CXXFLAGS $CXXFLAGS"
 
-AC_CHECK_HEADERS([osmium/osm/relation.hpp osmium/io/any_input.hpp],, 
+AC_CHECK_HEADERS([osmium/osm/relation.hpp osmium/io/any_input.hpp],,
   [please install the libosmium header-only library],
   [[
 #include <osmium/osm/relation.hpp>
@@ -61,24 +61,24 @@ AC_CHECK_HEADERS([osmium/osm/relation.hpp osmium/io/any_input.hpp],,
 
 LIBS="-lbz2 $LIBS"
 
-AC_ARG_WITH([bz2],, 
+AC_ARG_WITH([bz2],,
 [AC_MSG_ERROR([please install the bz2 library])])
 
 LIBS="-lz $LIBS"
 
-AC_ARG_WITH([z],, 
+AC_ARG_WITH([z],,
 [AC_MSG_ERROR([please install the z library])])
 
 LIBS="-losmpbf $LIBS"
 
-AC_ARG_WITH([osmpbf],, 
+AC_ARG_WITH([osmpbf],,
   [AC_MSG_ERROR([please install the osmpbf library])])
 
 LIBS="-lprotobuf-lite $LIBS"
 
 LIBS="-lexpat $LIBS"
 
-AC_ARG_WITH([expat],, 
+AC_ARG_WITH([expat],,
 [AC_MSG_ERROR([please install the expat library])])
 
 #save_LIBS="$LIBS"
@@ -112,6 +112,6 @@ AC_SUBST([AM_CXXFLAGS])
 AC_SUBST([AM_LDFLAGS])
 
 AC_CONFIG_FILES([
- src/Makefile 
+ src/Makefile
  ])
 AC_OUTPUT
