@@ -4,8 +4,6 @@ FROM dorowu/ubuntu-desktop-lxde-vnc:bionic
 ADD justine/ /root/Desktop/justine/
 ADD debrecen.osm /root/Desktop/justine/
 ADD run.sh /root/Desktop/
-add lmap.txt /root
-add lmap.txt /root/Desktop/
 
 # dependencies
 RUN apt update \
