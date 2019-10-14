@@ -8,4 +8,17 @@ ADD debrecen.osm /root/Desktop/justine/
 RUN apt update \
     && apt install -y libtool m4 automake autoconf libosmium-dev\
     g++ curl make libboost-all-dev pkg-config protobuf-compiler libprotobuf-dev \
-    flex libgflags-dev libosmpbf-dev
+    flex libgflags-dev libosmpbf-dev openjdk-8-jdk openjdk-8-jre maven
+
+# compile OOCWC/rcemu
+RUN cd /root/Desktop/justine/rcemu \
+    ; autoreconf --install \
+    ; ./configure \
+    ; make
+
+# run RCEMU
+RUN lxterminal --command="/bin/bash -c 'cd Desktop/justine/rcemu; src/smartcity --osm=../debrecen.osm --city=Debrecen --shm=JustineSharedMemory'"
+
+# compile OOCWC/rclog
+RUN cd /root/Desktop/justine/rclog \
+    ; mvn clean compile package site assembly:assembly
