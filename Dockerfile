@@ -16,8 +16,6 @@ RUN cd /root/Desktop/justine/rcemu \
     ; ./configure \
     ; make
 
-# run RCEMU
-RUN lxterminal --command="/bin/bash -c 'cd Desktop/justine/rcemu; src/smartcity --osm=../debrecen.osm --city=Debrecen --shm=JustineSharedMemory'"
 
 # compile OOCWC/rclog
 RUN cd /root/Desktop/justine/rclog \
